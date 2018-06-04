@@ -5,8 +5,8 @@
 ## TL;DR;
 
 ```console
-$ git clone https://git.cdwv.pl/kubernetes/charts/pdns
-$ cd pdns
+$ git clone https://github.com/cdwv/powerdns-helm
+$ cd powerdns-helm
 $ helm install .
 ```
 
