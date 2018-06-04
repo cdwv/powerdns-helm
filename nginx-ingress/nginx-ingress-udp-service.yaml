@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx-ingress
+    chart: nginx-ingress-0.11.2
+    component: controller
+    heritage: Tiller
+    release: nginx-ingress
+  name: nginx-ingress-controller-udp
+  namespace: nginx-ingress
+spec:
+  externalIPs: []
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: dns-udp
+    port: 53
+    protocol: UDP
+    targetPort: 53
+  selector:
+    app: nginx-ingress
+    component: controller
+    release: nginx-ingress
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}

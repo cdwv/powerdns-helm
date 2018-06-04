@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  "53": incubator/pdns:53
+kind: ConfigMap
+metadata:
+  name: udp-ports
+  namespace: nginx-ingress

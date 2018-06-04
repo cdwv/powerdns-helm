@@ -64,3 +64,12 @@ The command removes all the Kubernetes components associated with the chart and 
 | `mariadb.persistence.storageClass`           | PVC Storage Class                          | `nil` (uses alpha storage class annotation)                |
 | `mariadb.persistence.accessMode`             | PVC Access Mode                            | `ReadWriteOnce`                                            |
 | `mariadb.persistence.size`                   | PVC Storage Request                        | `2Gi`   |
+
+
+# Modifications to nginx-ingress
+
+General steps are outlined below. You can consult the files in the nginx-ingress folder for more information.
+
+1. Patch the nginx-ingress deployment to add UDP services (--udp-services-configmap=nginx-ingress/udp-ports)
+2. Add udp-ports configmap to nginx-ingress namespace
+2. Add a UDP loadbalancer service
