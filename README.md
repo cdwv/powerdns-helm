@@ -73,3 +73,10 @@ General steps are outlined below. You can consult the files in the nginx-ingress
 1. Patch the nginx-ingress deployment to add UDP services (--udp-services-configmap=nginx-ingress/udp-ports)
 2. Add udp-ports configmap to nginx-ingress namespace
 2. Add a UDP loadbalancer service
+
+# TODO
+
+* [ ] - Make sure all kubernetes/charts [technical requirements](https://github.com/kubernetes/charts/blob/master/CONTRIBUTING.md#technical-requirements) are met
+* [ ] - Make sure all kubernetes/charts [documentation requirements](https://github.com/kubernetes/charts/blob/master/CONTRIBUTING.md#documentation-requirements) are met
+* [ ] - Add more pdns configuration options
+* [ ] - Support secrets
