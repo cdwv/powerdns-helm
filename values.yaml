@@ -8,6 +8,9 @@ pdns:
         key: PowerDNSAPI
     webserver:
         allowFrom: 0.0.0.0/0
+    dnsupdate:
+        enabled: no
+
 replicaCount: 1
 
 image:
