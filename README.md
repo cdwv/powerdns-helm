@@ -40,6 +40,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `pdns.api.enabled`         | Should the PowerDNS API be enabled | `yes`
 | `pdns.api.key`             | PowerDNS API key | `PowerDNSAPI`
 | `pdns.webserver.allowFrom` | PowerDNS webserver allowed IP whitelist |  `0.0.0.0/0`
+| `pdns.dnsupdate.enabled`   | Should DNS UPDATE support be enabled | `no` |
 | `replicaCount`                 | Number of pdns nodes | `1` |
 | `image.repository`         | Image repository | `psitrax/powerdns` |
 | `image.tag`                | Image tag. | `4.1.2`|

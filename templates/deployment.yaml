@@ -24,7 +24,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["/entrypoint.sh"]
-          args: ["--api={{ .Values.pdns.api.enabled }}", "--api-key={{ .Values.pdns.api.key }}", "--webserver=yes", "--webserver-port=8081", "--webserver-address=0.0.0.0", "--webserver-allow-from={{ .Values.pdns.webserver.allowFrom }}", "--slave=yes"]
+          args: ["--api={{ .Values.pdns.api.enabled }}", "--api-key={{ .Values.pdns.api.key }}", "--webserver=yes", "--webserver-port=8081", "--webserver-address=0.0.0.0", "--webserver-allow-from={{ .Values.pdns.webserver.allowFrom }}", "--slave=yes", "--dnsupdate={{ .Values.pdns.dnsupdate.enabled }}"]
           env:
               - name: MYSQL_HOST
                 value: {{ template "mariadb.fullname" . }}
