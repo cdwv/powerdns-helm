@@ -20,6 +20,7 @@ image:
 
 service:
   type: ClusterIP
+  # loadBalancerIP: 1.2.3.4
 
 ingress:
   enabled: true

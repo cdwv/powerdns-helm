@@ -9,6 +9,9 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   type: {{ .Values.service.type }}
+  {{- if  .Values.service.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.service.loadBalancerIP }}
+  {{- end }} 
   ports:
     - port: 8081
       targetPort: 8081
