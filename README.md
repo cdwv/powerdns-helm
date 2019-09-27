@@ -65,6 +65,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `mariadb.persistence.storageClass`           | PVC Storage Class                          | `nil` (uses alpha storage class annotation)                |
 | `mariadb.persistence.accessMode`             | PVC Access Mode                            | `ReadWriteOnce`                                            |
 | `mariadb.persistence.size`                   | PVC Storage Request                        | `2Gi`   |
+| `mariadb.serviceDiscovery`           | Discovery of mariadb service. One of: dns, env         | `dns`   |
 
 
 # Modifications to nginx-ingress
