@@ -21,7 +21,7 @@ image:
 service:
   type: ClusterIP
   # Allows setting explicit ClusterIP address (https://kubernetes.io/docs/concepts/services-networking/service/#choosing-your-own-ip-address)
-  # clusterip: ""
+  # clusterIP: ""
 
 ingress:
   enabled: true

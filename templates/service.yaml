@@ -10,7 +10,7 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   {{- if .Values.service.clusterip }}
-  clusterIP: {{ .Values.service.clusterip | quote }}
+  clusterIP: {{ .Values.service.clusterIP | quote }}
   {{- end }}
   ports:
     - port: 8081
