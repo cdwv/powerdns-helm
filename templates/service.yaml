@@ -9,7 +9,7 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   type: {{ .Values.service.type }}
-  {{- if .Values.service.clusterip }}
+  {{- if .Values.service.clusterIP }}
   clusterIP: {{ .Values.service.clusterIP | quote }}
   {{- end }}
   ports:
