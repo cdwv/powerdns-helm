@@ -24,7 +24,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["/entrypoint.sh"]
-          args: ["--api={{ .Values.pdns.api.enabled }}", "--api-key={{ .Values.pdns.api.key }}", "--webserver=yes", "--webserver-port=8081", "--webserver-address=0.0.0.0", "--webserver-allow-from={{ .Values.pdns.webserver.allowFrom }}", "--slave=yes", "--dnsupdate={{ .Values.pdns.dnsupdate.enabled }}"]
+          args: ["--api={{ .Values.pdns.api.enabled }}", "--api-key=$(POWERDNS_API_KEY)", "--webserver=yes", "--webserver-port=8081", "--webserver-address=0.0.0.0", "--webserver-allow-from={{ .Values.pdns.webserver.allowFrom }}", "--slave=yes", "--dnsupdate={{ .Values.pdns.dnsupdate.enabled }}"]
           env:
               - name: MYSQL_HOST
                 value: {{ template "mariadb.fullname" . }}
@@ -35,6 +35,11 @@ spec:
                 value: {{ .Values.mariadb.mariadbPassword | quote }}
               - name: MYSQL_DB
                 value: {{ .Values.mariadb.mariadbDatabase | quote }}
+              - name: POWERDNS_API_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: powerdns-api-key
+                    key: POWERDNS_API_KEY
           ports:
             - name: dns-udp
               containerPort: 53
@@ -67,3 +72,7 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
+      volumes:
+      - name: powerdns-api-key
+        secret:
+          secretName: powerdns-api-key
