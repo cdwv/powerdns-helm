@@ -27,7 +27,11 @@ spec:
           args: ["--api={{ .Values.pdns.api.enabled }}", "--api-key=$(POWERDNS_API_KEY)", "--webserver=yes", "--webserver-port=8081", "--webserver-address=0.0.0.0", "--webserver-allow-from={{ .Values.pdns.webserver.allowFrom }}", "--slave=yes", "--dnsupdate={{ .Values.pdns.dnsupdate.enabled }}"]
           env:
               - name: MYSQL_HOST
+              {{- if or (empty .Values.mariadb.serviceDiscovery) (eq .Values.mariadb.serviceDiscovery "dns") }}
                 value: {{ template "mariadb.fullname" . }}
+              {{- else if eq .Values.mariadb.serviceDiscovery "env" }}
+                value: {{ (include "mariadb.fullname" .) | replace "-" "_" | upper | printf "$(%s_SERVICE_HOST)" }}
+              {{- end }}
               - name: MYSQL_USER
                 value: "root"
                 value: {{ .Values.mariadb.mariadbUser | quote }}
