@@ -12,6 +12,8 @@ pdns:
         enabled: no
 
 replicaCount: 1
+## Specifies whether chart should be deployed as cluster-service or normal k8s app.
+# isClusterService: false
 
 image:
   repository: psitrax/powerdns
@@ -20,7 +22,7 @@ image:
 
 service:
   type: ClusterIP
-  # Allows setting explicit ClusterIP address (https://kubernetes.io/docs/concepts/services-networking/service/#choosing-your-own-ip-address)
+  ## Allows setting explicit ClusterIP address (https://kubernetes.io/docs/concepts/services-networking/service/#choosing-your-own-ip-address)
   # clusterIP: ""
 
 ingress:

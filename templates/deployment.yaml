@@ -19,6 +19,9 @@ spec:
         app: {{ template "pdns.name" . }}
         release: {{ .Release.Name }}
     spec:
+      {{- if .Values.isClusterService }}
+      dnsPolicy: Default
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

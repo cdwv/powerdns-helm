@@ -42,6 +42,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `pdns.webserver.allowFrom` | PowerDNS webserver allowed IP whitelist |  `0.0.0.0/0`
 | `pdns.dnsupdate.enabled`   | Should DNS UPDATE support be enabled | `no` |
 | `replicaCount`                 | Number of pdns nodes | `1` |
+| `isClusterService`         | Specifies whether chart should be deployed as cluster-service or normal k8s app | `false` |
 | `image.repository`         | Image repository | `psitrax/powerdns` |
 | `image.tag`                | Image tag. | `4.1.2`|
 | `image.pullPolicy`         | Image pull policy | `IfNotPresent` |
