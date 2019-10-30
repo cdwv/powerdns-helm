@@ -76,7 +76,3 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
-      volumes:
-      - name: powerdns-api-key
-        secret:
-          secretName: powerdns-api-key
