@@ -1,6 +1,6 @@
 # Helm Chart for PowerDNS
 
-* Installs a PowerDNS authoritative nameserver
+* Installs a PowerDNS authoritative nameserver inside a Kubernetes cluster
 
 ## TL;DR;
 
