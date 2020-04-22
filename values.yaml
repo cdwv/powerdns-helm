@@ -3,13 +3,13 @@
 # Declare variables to be passed into your templates.
 
 pdns:
-    api:
-        enabled: yes
-        key: PowerDNSAPI
-    webserver:
-        allowFrom: 0.0.0.0/0
-    dnsupdate:
-        enabled: no
+  api:
+    enabled: yes
+    key: PowerDNSAPI
+  webserver:
+    allowFrom: 0.0.0.0/0
+  dnsupdate:
+    enabled: no
 
 replicaCount: 1
 
@@ -25,7 +25,7 @@ ingress:
   enabled: true
   annotations: {}
     # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  # kubernetes.io/tls-acme: "true"
   path: /
   hosts:
     - chart-example.local
@@ -44,7 +44,7 @@ resources: {}
   #  memory: 128Mi
   # requests:
   #  cpu: 100m
-  #  memory: 128Mi
+#  memory: 128Mi
 
 nodeSelector: {}
 
@@ -54,54 +54,24 @@ affinity: {}
 
 ##
 ## MariaDB chart configuration
+## Defaults: https://github.com/bitnami/charts/blob/master/bitnami/mariadb/values.yaml
 ##
 mariadb:
-  ## Whether to use the database specified as a requirement or not.
-  ## If you want to use a MariaDB database deployed to Kubernetes instead of
-  ## Azure Database for MySQL, set this to true.
-  enabled: true
-
-  ## MariaDB admin password
-  ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#setting-the-root-password-on-first-run
-  ##
-  # mariadbRootPassword:
-
-  ## Create a database
-  ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-on-first-run
-  ##
-  mariadbDatabase: powerdns
-
-  ## Create a database user
-  ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-user-on-first-run
-  ##
-  mariadbUser: powerdns
-
-  ## Password for mariadbUser
-  ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-user-on-first-run
-  ##
-  mariadbPassword: powerdns
-
-  ## Enable persistence using Persistent Volume Claims
-  ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
-  ##
-  ## Enable persistence using Persistent Volume Claims
-  ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
-  ##
-  persistence:
-    enabled: false
-    ## mariadb data Persistent Volume Storage Class
-    ## If defined, storageClassName: <storageClass>
-    ## If set to "-", storageClassName: "", which disables dynamic provisioning
-    ## If undefined (the default) or set to null, no storageClassName spec is
-    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-    ##   GKE, AWS & OpenStack)
-    ##
-    # storageClass: "-"
-    accessMode: ReadWriteOnce
-    size: 2Gi
-
-  ## How the MariaDB host address is discovered:
-  ## dns: using service name of mariadb, requires working dns in cluster (default)
-  ## env: using service ip of mariadb by using the exposed env of the mariadb service
-  serviceDiscovery: dns
-  
+  db:
+    user: powerdns
+    password: powerdns
+    name: powerdns
+  master:
+    persistence:
+      enabled: true
+      accessModes:
+        - ReadWriteOnce
+      size: 8Gi
+  slave:
+    persistence:
+      enabled: true
+      accessModes:
+        - ReadWriteOnce
+      size: 8Gi
+  metrics:
+    enabled: true
