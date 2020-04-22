@@ -15,7 +15,7 @@ replicaCount: 1
 
 image:
   repository: psitrax/powerdns
-  tag: 4.2.0
+  tag: v4.2.0
   pullPolicy: IfNotPresent
 
 service:
