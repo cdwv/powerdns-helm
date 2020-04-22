@@ -75,3 +75,7 @@ mariadb:
       size: 8Gi
   metrics:
     enabled: true
+  ## How the MariaDB host address is discovered:
+  ## dns: using service name of mariadb, requires working dns in cluster (default)
+  ## env: using service ip of mariadb by using the exposed env of the mariadb service
+  serviceDiscovery: dns

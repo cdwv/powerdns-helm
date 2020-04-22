@@ -34,11 +34,11 @@ spec:
               {{- end }}
               - name: MYSQL_USER
                 value: "root"
-                value: {{ .Values.mariadb.mariadbUser | quote }}
+                value: {{ .Values.mariadb.db.user | quote }}
               - name: MYSQL_PASS
-                value: {{ .Values.mariadb.mariadbPassword | quote }}
+                value: {{ .Values.mariadb.db.password | quote }}
               - name: MYSQL_DB
-                value: {{ .Values.mariadb.mariadbDatabase | quote }}
+                value: {{ .Values.mariadb.db.name | quote }}
               - name: POWERDNS_API_KEY
                 valueFrom:
                   secretKeyRef:
