@@ -46,6 +46,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `image.tag`                | Image tag. | `4.1.2`|
 | `image.pullPolicy`         | Image pull policy | `IfNotPresent` |
 | `service.type`             | Kubernetes service type | `ClusterIP` |
+| `service.loadBalancerIP`             | Kubernetes static IP for service | `` |
 | `ingress.enabled`          | Enables Ingress | `false` |
 | `ingress.annotations`      | Ingress annotations | `{}` |
 | `ingress.path`           | Custom path                       | `/`
