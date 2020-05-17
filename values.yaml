@@ -20,6 +20,8 @@ image:
 
 service:
   type: ClusterIP
+  loadBalancerIP:
+  annotations:
 
 ingress:
   enabled: true
