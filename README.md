@@ -1,6 +1,6 @@
 # Helm Chart for PowerDNS
 
-* Installs a PowerDNS authoritative nameserver inside a Kubernetes cluster
+* Updated and Installs a PowerDNS authoritative nameserver inside a Kubernetes >=1.14-0
 
 ## TL;DR;
 
@@ -65,7 +65,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `mariadb.persistence.storageClass`           | PVC Storage Class                          | `nil` (uses alpha storage class annotation)                |
 | `mariadb.persistence.accessMode`             | PVC Access Mode                            | `ReadWriteOnce`                                            |
 | `mariadb.persistence.size`                   | PVC Storage Request                        | `2Gi`   |
-| `mariadb.serviceDiscovery`           | Discovery of mariadb service. One of: dns, env         | `dns`   |
+| `mariadb.serviceDiscovery`           | Discovery of mariadb service. One of: dns, env, external         | `dns`   |
 
 
 # Modifications to nginx-ingress
@@ -75,6 +75,9 @@ General steps are outlined below. You can consult the files in the nginx-ingress
 1. Patch the nginx-ingress deployment to add UDP services (--udp-services-configmap=nginx-ingress/udp-ports)
 2. Add udp-ports configmap to nginx-ingress namespace
 2. Add a UDP loadbalancer service
+
+# Updates by Future
+Added discovery for mysql to exteranl which means we can tell it to use an external host. You just supply values with mariadb.db.host with a host URL
 
 # TODO
 

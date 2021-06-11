@@ -61,6 +61,7 @@ mariadb:
     user: powerdns
     password: powerdns
     name: powerdns
+    host: host-url
   master:
     persistence:
       enabled: true
