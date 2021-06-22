@@ -15,11 +15,12 @@ replicaCount: 1
 
 image:
   repository: psitrax/powerdns
-  tag: v4.2.0
+  tag: v4.4.1
   pullPolicy: IfNotPresent
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
+  loadBalancerIP: 123.123.123.123
 
 ingress:
   enabled: true

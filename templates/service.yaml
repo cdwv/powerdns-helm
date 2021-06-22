@@ -25,3 +25,6 @@ spec:
   selector:
     app: {{ template "pdns.name" . }}
     release: {{ .Release.Name }}
+{{- if .Values.service.loadBalancerIP -}}
+  loadBalancerIP: {{ .Values.service.loadBalancerIP }}
+{{- end }}
